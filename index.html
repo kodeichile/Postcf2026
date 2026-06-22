@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es-CL">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Able</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="public-site" id="publicSite">
+      <header class="market-header">
+        <a class="brand public-brand" href="#" data-public-home>
+          <span class="brand-mark" aria-hidden="true">VB</span>
+          <div>
+            <strong>Able</strong>
+            <span>Marketplace circular</span>
+          </div>
+        </a>
+        <nav class="market-nav" aria-label="Navegación pública">
+          <a href="#categorias">Categorías</a>
+          <a href="#subastas">Subastas</a>
+          <a href="#oficiales">Productos oficiales</a>
+          <a href="#tecnicos">Técnicos</a>
+        </nav>
+        <div class="market-actions">
+          <button class="button primary" data-action="publish-choice">Publicar producto</button>
+        </div>
+      </header>
+
+      <main id="publicRoot" class="market-content" tabindex="-1"></main>
+    </div>
+
+    <div class="modal-backdrop hidden" id="publishModal" role="dialog" aria-modal="true" aria-labelledby="publishTitle">
+      <form class="modal-card modal-wide" id="publishForm">
+        <div class="card-header">
+          <div>
+            <p class="eyebrow">Publicación trazable</p>
+            <h2 id="publishTitle">Publicar un equipo</h2>
+          </div>
+          <button type="button" class="icon-close" data-close-publish aria-label="Cerrar">×</button>
+        </div>
+        <div class="wizard-progress" aria-label="Progreso de publicación">
+          <span class="active" data-publish-progress="1">1. Destino</span>
+          <span data-publish-progress="2">2. Equipo</span>
+          <span data-publish-progress="3">3. Oferta</span>
+          <span data-publish-progress="4">4. Revisión</span>
+        </div>
+        <div id="publishStep"></div>
+        <div class="form-actions wizard-actions">
+          <button type="button" class="button secondary hidden" id="publishBack">Volver</button>
+          <button type="button" class="button primary" id="publishNext">Continuar</button>
+          <button type="submit" class="button primary hidden" id="publishSubmit">Publicar equipo</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-backdrop hidden" id="actionModal" role="dialog" aria-modal="true" aria-labelledby="actionTitle">
+      <form class="modal-card" id="actionForm">
+        <div class="card-header">
+          <div><p class="eyebrow">Flujo abierto de validación</p><h2 id="actionTitle">Continuar</h2></div>
+          <button type="button" class="icon-close" data-close-action aria-label="Cerrar">×</button>
+        </div>
+        <div id="actionContent"></div>
+        <button class="button primary full-width" type="submit" id="actionSubmit">Confirmar</button>
+      </form>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
