@@ -1,0 +1,2470 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ABLE | Seguridad privada inteligente</title>
+  <meta name="description" content="ABLE instala camaras solares, cerraduras electronicas y monitoreo de seguridad privada para hoteles, empresas, comunidades y obras.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080b;
+      --panel: #111318;
+      --panel-2: #171a20;
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f4f6f8;
+      --muted: #a9b0bc;
+      --soft: #d8dde6;
+      --red: #e50914;
+      --red-2: #ff3040;
+      --red-3: #9c0610;
+      --steel: #5d687a;
+      --shadow: rgba(0, 0, 0, 0.42);
+      --font-body: "Rajdhani", Bahnschrift, "Aptos", "Segoe UI", Arial, sans-serif;
+      --font-display: "Oxanium", "Agency FB", Bahnschrift, "Aptos Display", "Segoe UI Variable Display", sans-serif;
+      --font-ui: "Oxanium", "Rajdhani", Bahnschrift, "Segoe UI", Arial, sans-serif;
+      font-family: var(--font-body);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+      background: #080a0f;
+    }
+
+    body {
+      position: relative;
+      margin: 0;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 600;
+      letter-spacing: 0;
+      text-rendering: geometricPrecision;
+      background:
+        linear-gradient(180deg, rgba(8, 10, 15, 0.84) 0%, rgba(8, 10, 15, 0.9) 44%, rgba(7, 8, 11, 0.94) 100%),
+        #07080b;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        radial-gradient(circle at 86% 52%, rgba(255, 48, 64, 0.06), transparent 30%);
+      background-size: 92px 72px, 108px 72px, auto, auto;
+      opacity: 0.55;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(18, 22, 30, 0.34), rgba(6, 7, 10, 0.3) 48%, rgba(42, 5, 11, 0.16));
+    }
+
+    .site-header,
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    .brand,
+    .nav-links,
+    .btn,
+    .eyebrow,
+    .model-specs,
+    .drop-kicker,
+    .drop-points,
+    .scan-readouts button,
+    .metric strong,
+    .process-item::before,
+    .contact-list,
+    label {
+      font-family: var(--font-display);
+      letter-spacing: 0;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 8, 11, 0.88);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-shell {
+      width: min(1536px, calc(100% - 48px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(16px, 2.2vw, 32px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      width: max-content;
+      font-weight: 800;
+      letter-spacing: 0;
+      color: var(--text);
+      text-transform: uppercase;
+      font-stretch: condensed;
+    }
+
+    .brand-image {
+      width: clamp(174px, 15vw, 220px);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 16px rgba(229, 9, 20, 0.22));
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 0 18px rgba(229, 9, 20, 0.34));
+    }
+
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .brand-logo .signal-line,
+    .brand-logo .shield-line {
+      vector-effect: non-scaling-stroke;
+    }
+
+    .brand-text {
+      display: grid;
+      line-height: 0.86;
+    }
+
+    .brand-name {
+      font-size: clamp(1.34rem, 1.7vw, 1.72rem);
+      letter-spacing: 0;
+    }
+
+    .brand-sub {
+      margin-top: 5px;
+      color: var(--red-2);
+      font-size: clamp(0.5rem, 0.68vw, 0.62rem);
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: clamp(14px, 2.2vw, 34px);
+      min-width: 0;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: clamp(0.76rem, 0.8vw, 0.86rem);
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-links a {
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--red-2);
+      outline: none;
+    }
+
+    .header-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-dot {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--soft);
+      background: #101217;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    }
+
+    .theme-dot::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--red-2);
+      box-shadow: 0 0 20px rgba(255, 48, 64, 0.76);
+    }
+
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.86rem;
+      white-space: nowrap;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid rgba(255, 48, 64, 0.28);
+      outline-offset: 3px;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--red), var(--red-2));
+      box-shadow: 0 16px 44px rgba(229, 9, 20, 0.28);
+    }
+
+    .btn-secondary {
+      color: var(--red-2);
+      border-color: var(--red-2);
+      background: rgba(229, 9, 20, 0.03);
+    }
+
+    main {
+      min-height: 100vh;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 78px);
+      display: grid;
+      place-items: center;
+      padding: clamp(50px, 6vw, 96px) 24px clamp(58px, 7vw, 104px);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 80%, transparent 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      width: min(900px, 78vw);
+      height: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(255, 48, 64, 0.64), transparent);
+      box-shadow: 0 0 38px rgba(255, 48, 64, 0.45);
+    }
+
+    .security-canvas {
+      position: absolute;
+      inset: auto 0 0;
+      z-index: -2;
+      width: 100%;
+      height: min(52vh, 520px);
+      opacity: 0.72;
+    }
+
+    .model-section {
+      padding-top: clamp(34px, 4.5vw, 62px);
+      padding-bottom: clamp(36px, 4.5vw, 64px);
+      background:
+        linear-gradient(135deg, rgba(18, 22, 30, 0.56), rgba(8, 10, 15, 0.74) 54%, rgba(18, 4, 8, 0.36));
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .model-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18, 22, 30, 0.22), transparent 54%, rgba(42, 5, 11, 0.16));
+      background-size: 92px 72px, 108px 72px, auto;
+    }
+
+    .model-section::after {
+      content: "";
+      position: absolute;
+      inset: auto -8% 0;
+      height: 46%;
+      z-index: -1;
+      background: linear-gradient(180deg, transparent, rgba(255, 48, 64, 0.035));
+    }
+
+    .model-stage {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(300px, 0.58fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(22px, 3.6vw, 48px);
+    }
+
+    .model-copy {
+      display: grid;
+      gap: 16px;
+      align-content: center;
+    }
+
+    .model-copy h2 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4.6vw, 5.15rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+      font-weight: 800;
+      font-stretch: condensed;
+    }
+
+    .green-accent {
+      color: var(--red-2);
+      text-shadow: 0 0 30px rgba(255, 48, 64, 0.34);
+    }
+
+    .model-copy p {
+      margin: 0;
+      max-width: 560px;
+      color: #c9d6ce;
+      line-height: 1.58;
+      font-size: clamp(0.96rem, 1.25vw, 1.05rem);
+    }
+
+    .model-specs {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 9px;
+      max-width: 520px;
+    }
+
+    .model-specs li {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      color: var(--soft);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+
+    .model-specs li::before {
+      content: "";
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(255, 48, 64, 0.42);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, var(--red-2) 0 4px, transparent 5px),
+        rgba(255, 48, 64, 0.08);
+      box-shadow: 0 0 22px rgba(255, 48, 64, 0.22);
+    }
+
+    .solar-visual {
+      min-height: 380px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(24, 29, 38, 0.82), rgba(8, 10, 15, 0.98) 58%, rgba(25, 4, 8, 0.52)),
+        #0c0e13;
+    }
+
+    .solar-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+        radial-gradient(circle at 88% 82%, rgba(255, 48, 64, 0.08), transparent 28%);
+      background-size: 92px 68px, 108px 68px, auto;
+      opacity: 0.26;
+      pointer-events: none;
+    }
+
+    .solar-visual::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 58px;
+      height: 3px;
+      background: rgba(255, 48, 64, 0.66);
+      box-shadow: 0 0 28px rgba(255, 48, 64, 0.5);
+      pointer-events: none;
+    }
+
+    #solarCamera3d,
+    #lock3d {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 380px;
+      min-height: 330px;
+      cursor: grab;
+      touch-action: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+      z-index: 1;
+    }
+
+    #solarCamera3d.is-active,
+    #lock3d.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #solarCamera3d.is-active {
+      filter:
+        drop-shadow(0 16px 26px rgba(255, 48, 64, 0.12))
+        drop-shadow(0 0 10px rgba(255, 48, 64, 0.08));
+    }
+
+    #solarCamera3d:active,
+    #lock3d:active {
+      cursor: grabbing;
+    }
+
+    .scan-readouts {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      pointer-events: auto;
+      z-index: 3;
+    }
+
+    .scan-readouts button {
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 48, 64, 0.32);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.38);
+      color: #ffd7dc;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      box-shadow: 0 0 28px rgba(255, 48, 64, 0.16);
+      cursor: pointer;
+      transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .scan-readouts button:hover,
+    .scan-readouts button:focus-visible,
+    .scan-readouts button.is-active {
+      background: rgba(255, 48, 64, 0.16);
+      border-color: rgba(255, 48, 64, 0.72);
+      color: #fff;
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .device-drops {
+      width: min(860px, calc(100% - 40px));
+      min-height: 0;
+      margin: clamp(14px, 2.6vw, 26px) auto 0;
+    }
+
+    .device-drop {
+      position: relative;
+      display: none;
+      gap: 16px;
+      padding: clamp(18px, 2.4vw, 24px);
+      border: 1px solid rgba(255, 48, 64, 0.28);
+      border-radius: 10px;
+      background:
+        linear-gradient(90deg, rgba(255, 48, 64, 0.12), transparent 34%),
+        linear-gradient(145deg, rgba(18, 22, 30, 0.92), rgba(7, 8, 12, 0.9));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 22px 60px rgba(0, 0, 0, 0.34),
+        0 0 44px rgba(255, 48, 64, 0.1);
+      overflow: hidden;
+    }
+
+    .device-drop.is-active {
+      display: grid;
+      animation: infoPanelIn 220ms ease both;
+    }
+
+    .device-drop::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 48, 64, 0.92), transparent);
+      box-shadow: 0 0 18px rgba(255, 48, 64, 0.6);
+      pointer-events: none;
+    }
+
+    .device-drop::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(90deg, black, transparent 78%);
+      pointer-events: none;
+    }
+
+    .drop-kicker {
+      width: max-content;
+      max-width: 100%;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 48, 64, 0.12);
+      color: #ffb5bc;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .device-drop h3 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(1.28rem, 2vw, 1.72rem);
+      line-height: 1.02;
+      text-transform: uppercase;
+    }
+
+    .device-drop p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.58;
+    }
+
+    .drop-points {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+      list-style: none;
+      color: var(--soft);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .drop-points li {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    @keyframes infoPanelIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .drop-points li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--red-2);
+      box-shadow: 0 0 18px rgba(255, 48, 64, 0.54);
+      flex: 0 0 auto;
+    }
+
+    .hero-copy {
+      width: min(1020px, 100%);
+      margin: 0 auto;
+      text-align: center;
+      display: grid;
+      justify-items: center;
+      gap: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-size: 0.82rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--red-2);
+      box-shadow: 0 0 18px var(--red-2);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 920px;
+      font-size: clamp(2.75rem, 7.2vw, 6.4rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      font-weight: 800;
+      font-stretch: condensed;
+    }
+
+    .accent {
+      color: var(--red-2);
+      text-shadow: 0 0 42px rgba(255, 48, 64, 0.18);
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      color: #c9d0dc;
+      font-size: clamp(1rem, 1.6vw, 1.26rem);
+      line-height: 1.58;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      padding-top: 8px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      width: min(1060px, calc(100% - 48px));
+      margin: -28px auto 0;
+      position: relative;
+      z-index: 4;
+      background: var(--line);
+      border: 1px solid var(--line);
+      box-shadow: 0 28px 80px var(--shadow);
+    }
+
+    .metric {
+      min-height: 104px;
+      padding: 20px;
+      background: rgba(17, 19, 24, 0.94);
+      display: grid;
+      align-content: center;
+      gap: 8px;
+    }
+
+    .metric strong {
+      font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+      color: #fff;
+    }
+
+    .metric span {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .section {
+      padding: clamp(48px, 6vw, 82px) 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .section-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.7fr);
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.9rem, 3.8vw, 3.9rem);
+      line-height: 1;
+      letter-spacing: 0;
+      font-weight: 800;
+      font-stretch: condensed;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.98rem;
+    }
+
+    .operation-heading {
+      display: block;
+      margin-bottom: 22px;
+    }
+
+    .operation-heading p {
+      margin-top: 14px;
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .photo-section {
+      padding-top: 0;
+      background: rgba(8, 9, 12, 0.54);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .photo-tile {
+      min-height: 330px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #101217;
+      overflow: hidden;
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.22);
+    }
+
+    .photo-tile img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1.56;
+      object-fit: cover;
+      background: #0c0e13;
+    }
+
+    .lock-visual-3d {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1.56;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(32, 36, 44, 0.92), rgba(8, 10, 15, 0.98) 54%, rgba(42, 5, 11, 0.92)),
+        #0c0e13;
+    }
+
+    .lock-visual-3d::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+        radial-gradient(circle at 54% 78%, rgba(255, 48, 64, 0.24), transparent 25%);
+      background-size: 92px 68px, 108px 68px, auto;
+      opacity: 0.28;
+      pointer-events: none;
+    }
+
+    .lock-visual-3d::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 46px;
+      height: 3px;
+      background: rgba(255, 48, 64, 0.66);
+      box-shadow: 0 0 28px rgba(255, 48, 64, 0.5);
+      pointer-events: none;
+    }
+
+    .lock-visual-3d canvas {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .lock-readouts {
+      position: absolute;
+      z-index: 2;
+      left: 18px;
+      top: 18px;
+      display: grid;
+      gap: 4px;
+      color: #fff;
+      font-weight: 800;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    .lock-readouts strong {
+      font-size: clamp(1.2rem, 2vw, 1.65rem);
+      letter-spacing: 0;
+    }
+
+    .lock-readouts span {
+      color: var(--red-2);
+      font-size: 0.86rem;
+      letter-spacing: 0;
+    }
+
+    .photo-caption {
+      padding: 18px 20px 22px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .photo-caption strong {
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .photo-caption span {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .solution-card {
+      min-height: 282px;
+      display: grid;
+      align-content: space-between;
+      gap: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+        var(--panel);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.24);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .solution-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 48, 64, 0.2), transparent 42%);
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .solution-card:hover::before {
+      opacity: 1;
+    }
+
+    .icon-block {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(229, 9, 20, 0.14);
+      border: 1px solid rgba(255, 48, 64, 0.36);
+      color: #fff;
+      position: relative;
+    }
+
+    .icon-block::before,
+    .icon-block::after {
+      content: "";
+      position: absolute;
+      background: var(--red-2);
+    }
+
+    .icon-camera::before {
+      width: 30px;
+      height: 18px;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .icon-camera::after {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 16px -12px 0 -3px var(--red-2);
+    }
+
+    .icon-access::before {
+      width: 22px;
+      height: 34px;
+      border-radius: 6px;
+      background: linear-gradient(180deg, rgba(255, 48, 64, 0.32), rgba(7, 8, 11, 0.08));
+      box-shadow: inset 0 0 0 2px var(--red-2), inset 0 8px 0 rgba(255, 255, 255, 0.16);
+    }
+
+    .icon-access::after {
+      width: 5px;
+      height: 18px;
+      border-radius: 999px;
+      background: #fff;
+      transform: translate(8px, 5px);
+      box-shadow:
+        -10px -12px 0 -1px rgba(255, 48, 64, 0.92),
+        -10px -6px 0 -1px rgba(255, 48, 64, 0.72),
+        -10px 0 0 -1px rgba(255, 48, 64, 0.72);
+    }
+
+    .icon-software::before {
+      width: 34px;
+      height: 25px;
+      border-radius: 5px;
+      background:
+        linear-gradient(var(--red-2), var(--red-2)) 7px 8px / 7px 3px no-repeat,
+        linear-gradient(var(--red-2), var(--red-2)) 20px 8px / 7px 3px no-repeat,
+        linear-gradient(var(--red-2), var(--red-2)) 7px 16px / 20px 3px no-repeat,
+        linear-gradient(180deg, rgba(255, 48, 64, 0.22), rgba(7, 8, 11, 0.14));
+      box-shadow: inset 0 0 0 2px var(--red-2);
+    }
+
+    .icon-software::after {
+      width: 22px;
+      height: 12px;
+      border: 2px solid var(--red-2);
+      border-top: 0;
+      background: transparent;
+      transform: translateY(18px);
+      border-radius: 0 0 6px 6px;
+    }
+
+    .icon-electric::before {
+      width: 24px;
+      height: 34px;
+      border-radius: 6px 6px 9px 9px;
+      background:
+        linear-gradient(var(--red-2), var(--red-2)) 8px 5px / 3px 8px no-repeat,
+        linear-gradient(var(--red-2), var(--red-2)) 14px 5px / 3px 8px no-repeat,
+        linear-gradient(180deg, rgba(255, 48, 64, 0.26), rgba(7, 8, 11, 0.1));
+      box-shadow: inset 0 0 0 2px var(--red-2);
+    }
+
+    .icon-electric::after {
+      width: 16px;
+      height: 22px;
+      background: transparent;
+      border-left: 3px solid #fff;
+      border-bottom: 3px solid #fff;
+      transform: translate(15px, 9px) rotate(-26deg);
+      border-radius: 0 0 0 8px;
+      box-shadow: 7px 8px 0 -5px var(--red-2);
+    }
+
+    .solution-card h3 {
+      margin: 0;
+      font-size: 1.28rem;
+      letter-spacing: 0;
+    }
+
+    .solution-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.52;
+    }
+
+    .solution-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: var(--soft);
+    }
+
+    .solution-card li {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .solution-card li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red-2);
+      flex: 0 0 auto;
+    }
+
+    .plans {
+      background:
+        linear-gradient(90deg, rgba(255, 48, 64, 0.1), transparent 50%),
+        rgba(8, 9, 12, 0.6);
+    }
+
+    .plans-panel {
+      display: block;
+      border: 1px solid rgba(255, 48, 64, 0.24);
+      border-radius: 8px;
+      padding: clamp(24px, 4vw, 44px);
+      background:
+        linear-gradient(135deg, rgba(255, 48, 64, 0.1), transparent 42%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.016)),
+        rgba(13, 15, 20, 0.82);
+      box-shadow: 0 30px 88px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plans-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      background-size: 96px 72px, 108px 72px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .plans-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .plans-copy h2 {
+      margin: 0;
+      max-width: 840px;
+      font-size: clamp(2rem, 4.4vw, 4.3rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .plans-copy > p {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.58;
+    }
+
+    .plans-copy strong {
+      color: #fff;
+    }
+
+    .plans-benefits {
+      margin: 26px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 18px;
+    }
+
+    .plans-benefits li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--soft);
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .plans-benefits li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      margin-top: 5px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--red-2);
+      border: 1px solid rgba(255, 174, 181, 0.45);
+      box-shadow: 0 0 12px rgba(255, 48, 64, 0.38);
+      animation: planDotBreath 3.8s ease-in-out infinite;
+    }
+
+    .plans-benefits li:nth-child(2)::before {
+      animation-delay: 420ms;
+    }
+
+    .plans-benefits li:nth-child(3)::before {
+      animation-delay: 840ms;
+    }
+
+    .plans-benefits li:nth-child(4)::before {
+      animation-delay: 1260ms;
+    }
+
+    .plans-benefits li:nth-child(5)::before {
+      animation-delay: 1680ms;
+    }
+
+    .plans-tagline {
+      margin: 28px 0 0;
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.4vw, 2rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .plans-copy .btn {
+      margin-top: 24px;
+      min-height: 50px;
+      padding: 0 22px;
+    }
+
+    @keyframes planDotBreath {
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 48, 64, 0.28);
+        opacity: 0.82;
+      }
+
+      50% {
+        transform: scale(1.18);
+        box-shadow: 0 0 18px rgba(255, 48, 64, 0.52);
+        opacity: 1;
+      }
+    }
+
+    .operation {
+      background:
+        linear-gradient(90deg, rgba(229, 9, 20, 0.12), transparent 46%),
+        rgba(10, 11, 15, 0.68);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: clamp(24px, 4vw, 48px);
+      align-items: center;
+    }
+
+    .process {
+      width: min(880px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      counter-reset: step;
+    }
+
+    .process-item {
+      min-height: 132px;
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      padding: 20px 22px;
+      border: 1px solid rgba(255, 48, 64, 0.2);
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(255, 48, 64, 0.06), transparent 42%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
+        rgba(14, 16, 22, 0.76);
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.22);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translate3d(-18px, 0, 0);
+      will-change: opacity, transform;
+    }
+
+    .process.is-visible .process-item {
+      animation: protocolCardSequence 560ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .process.is-visible .process-item:nth-child(2) {
+      animation-delay: 220ms;
+    }
+
+    .process.is-visible .process-item:nth-child(3) {
+      animation-delay: 440ms;
+    }
+
+    .process.is-visible .process-item:nth-child(4) {
+      animation-delay: 660ms;
+    }
+
+    .process-item::before {
+      counter-increment: step;
+      content: counter(step, decimal-leading-zero);
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--red-3), var(--red-2));
+      box-shadow: 0 0 14px rgba(255, 48, 64, 0.16);
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-item::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--red-2);
+      transform: scaleY(0);
+      transform-origin: top;
+      opacity: 0.82;
+      pointer-events: none;
+    }
+
+    .process.is-visible .process-item::after {
+      animation: protocolLineIn 420ms ease-out forwards;
+    }
+
+    .process.is-visible .process-item:nth-child(2)::after {
+      animation-delay: 220ms;
+    }
+
+    .process.is-visible .process-item:nth-child(3)::after {
+      animation-delay: 440ms;
+    }
+
+    .process.is-visible .process-item:nth-child(4)::after {
+      animation-delay: 660ms;
+    }
+
+    .process-item h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+      color: #fff;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes protocolCardSequence {
+      0% {
+        opacity: 0;
+        transform: translate3d(-18px, 0, 0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes protocolLineIn {
+      0% {
+        transform: scaleY(0);
+      }
+
+      100% {
+        transform: scaleY(1);
+      }
+    }
+
+    .contact {
+      background:
+        linear-gradient(180deg, rgba(255, 48, 64, 0.05), transparent),
+        rgba(8, 9, 12, 0.62);
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(320px, 0.7fr);
+      gap: 32px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(24px, 5vw, 54px);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24);
+    }
+
+    .contact-panel h2 {
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 4vw, 4.1rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .contact-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+
+    .contact-list {
+      margin: 32px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      color: var(--soft);
+      font-weight: 700;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-list li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--red-2);
+      box-shadow: 0 0 18px rgba(255, 48, 64, 0.55);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field span {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 750;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      min-height: 54px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: var(--text);
+      background: rgba(0, 0, 0, 0.28);
+      resize: vertical;
+    }
+
+    .field textarea {
+      min-height: 132px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--red-2);
+      outline: 3px solid rgba(255, 48, 64, 0.18);
+    }
+
+    footer {
+      padding: 28px 24px 36px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(7, 8, 11, 0.72);
+    }
+
+    .footer-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .footer-inner strong {
+      color: #fff;
+      font-weight: 800;
+    }
+
+    @media (max-width: 980px) {
+      .site-header {
+        min-height: auto;
+        padding: 12px 0;
+      }
+
+      .nav-shell {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        width: min(100% - 28px, 980px);
+        gap: 14px;
+      }
+
+      .nav-links {
+        width: auto;
+        justify-content: flex-start;
+        gap: 16px;
+        overflow-x: auto;
+        padding: 4px 2px;
+      }
+
+      .header-actions {
+        gap: 10px;
+      }
+
+      .theme-dot {
+        display: none;
+      }
+
+      .hero {
+        min-height: 760px;
+        padding-top: 64px;
+      }
+
+      .metrics,
+      .model-stage,
+      .device-drops,
+      .solutions-grid,
+      .photo-grid,
+      .plans-panel,
+      .plans-benefits,
+      .process,
+      .section-heading,
+      .split,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        margin-top: 0;
+      }
+    }
+
+    @media (min-width: 981px) and (max-width: 1220px) {
+      .solutions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-shell {
+        grid-template-columns: 1fr auto;
+      }
+
+      .brand {
+        flex: 1 1 auto;
+      }
+
+      .brand-image {
+        width: 156px;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand-name {
+        font-size: 1.38rem;
+      }
+
+      .brand-sub {
+        font-size: 0.5rem;
+        letter-spacing: 0;
+      }
+
+      .header-actions .btn {
+        min-height: 46px;
+        padding: 0 16px;
+        font-size: 0.92rem;
+      }
+
+      .nav-links {
+        grid-column: 1 / -1;
+        font-size: 0.92rem;
+        width: 100%;
+      }
+
+      .hero {
+        min-height: 720px;
+        padding-inline: 18px;
+      }
+
+      .model-stage {
+        width: calc(100% - 32px);
+      }
+
+      .solar-visual {
+        min-height: 340px;
+      }
+
+      .device-drops {
+        width: calc(100% - 32px);
+        gap: 14px;
+      }
+
+      .device-drop {
+        min-height: auto;
+        border-radius: 10px;
+        transform: none;
+      }
+
+      .plans-panel {
+        padding: 22px;
+      }
+
+      .plans-benefits {
+        gap: 12px;
+      }
+
+      #solarCamera3d,
+      #lock3d {
+        height: 340px;
+        min-height: 300px;
+      }
+
+      h1 {
+        font-size: clamp(2.55rem, 14vw, 4.4rem);
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-actions,
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .metrics {
+        width: calc(100% - 32px);
+      }
+
+      .metric {
+        min-height: 110px;
+        padding: 22px;
+      }
+
+      .section {
+        padding-inline: 16px;
+      }
+
+      .solution-card {
+        min-height: 288px;
+        padding: 22px;
+      }
+
+      .footer-inner {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="#inicio" aria-label="ABLE inicio">
+        <img class="brand-image" src="assets/able-logo-header.png" alt="ABLE Security">
+      </a>
+
+      <nav class="nav-links" aria-label="Navegacion principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#planes">Plan de pertenencia</a>
+        <a href="#camara-3d">Dispositivos</a>
+        <a href="#operacion">Operacion</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-primary" href="#contacto">Cotizar ahora</a>
+        <span class="theme-dot" aria-hidden="true"></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <canvas class="security-canvas" id="securityCanvas" aria-hidden="true"></canvas>
+      <div class="hero-copy">
+        <span class="eyebrow">Seguridad privada con energia autonoma</span>
+        <h1>Proteccion <span class="accent">inteligente</span> para espacios criticos</h1>
+        <p>ABLE es una empresa de seguridad digital que disena, instala y monitorea soluciones para proteger lo que necesitas cuidar: accesos, perimetros, equipos electricos y puntos criticos en hoteles, empresas, comunidades, bodegas y obras.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#soluciones">Ver soluciones</a>
+          <a class="btn btn-secondary" href="#contacto">Solicitar evaluacion</a>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="metrics" aria-label="Indicadores de servicio">
+      <div class="metric">
+        <strong>24/7</strong>
+        <span>Vigilancia remota y respuesta coordinada ante eventos.</span>
+      </div>
+      <div class="metric">
+        <strong>100%</strong>
+        <span>Camaras solares para puntos sin energia disponible.</span>
+      </div>
+      <div class="metric">
+        <strong>3 capas</strong>
+        <span>Video, cerraduras electronicas y protocolo operativo en una sola estrategia.</span>
+      </div>
+    </section>
+
+    <section class="section" id="soluciones">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2>Soluciones de seguridad ABLE</h2>
+          <p>Disenamos sistemas robustos para operar en terreno, registrar evidencia y reducir ingresos no autorizados con tecnologia visible, disuasiva y conectada.</p>
+        </div>
+
+        <div class="solutions-grid">
+          <article class="solution-card">
+            <div>
+              <span class="icon-block icon-camera" aria-hidden="true"></span>
+              <h3>Camaras solares</h3>
+              <p>Vigilancia perimetral en zonas remotas, faenas, estacionamientos y accesos donde la energia tradicional no llega.</p>
+            </div>
+            <ul>
+              <li>Vision nocturna</li>
+              <li>Conexion remota</li>
+              <li>Registro de eventos</li>
+            </ul>
+          </article>
+
+          <article class="solution-card">
+            <div>
+              <span class="icon-block icon-access" aria-hidden="true"></span>
+              <h3>Cerraduras electronicas</h3>
+              <p>Apertura con tarjeta, PIN, app o credenciales para habitaciones de hotel, oficinas y areas restringidas de empresas.</p>
+            </div>
+            <ul>
+              <li>Tarjetas y PIN</li>
+              <li>Permisos por usuario</li>
+              <li>Registro de aperturas</li>
+            </ul>
+          </article>
+
+          <article class="solution-card">
+            <div>
+              <span class="icon-block icon-software" aria-hidden="true"></span>
+              <h3>Software de gestion para condominios</h3>
+              <p>Plataforma para administrar residentes, visitas, comunicaciones y registros operativos desde un solo panel.</p>
+            </div>
+            <ul>
+              <li>Control de visitas</li>
+              <li>Comunicados y reservas</li>
+              <li>Reportes administrativos</li>
+            </ul>
+          </article>
+
+          <article class="solution-card">
+            <div>
+              <span class="icon-block icon-electric" aria-hidden="true"></span>
+              <h3>Control remoto de dispositivos electricos</h3>
+              <p>Permite que cada usuario controle a distancia ampolletas, enchufes y dispositivos electronicos desde una app o plataforma conectada.</p>
+            </div>
+            <ul>
+              <li>Encendido y apagado remoto</li>
+              <li>Control por usuario</li>
+              <li>Automatizacion de espacios</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section plans" id="planes">
+      <div class="section-inner">
+        <div class="plans-panel">
+          <div class="plans-copy">
+            <span class="eyebrow">Plan de pertenencia</span>
+            <h2>Mientras mas tiempo estes con Able, menos pagas</h2>
+            <p>En Able premiamos tu permanencia. <strong>Tu mensualidad disminuye con el tiempo</strong> y, una vez alcanzada la tarifa minima, se mantiene para que tu seguridad siga activa sin subir el costo.</p>
+
+            <ul class="plans-benefits">
+              <li>Sin necesidad de comprar los equipos.</li>
+              <li>Soporte y tecnologia incluidos.</li>
+              <li><strong>Si un equipo falla, lo reponemos.</strong></li>
+              <li>Menor costo mientras mas tiempo permanezcas con nosotros.</li>
+              <li>Tarifa estable despues del primer ano.</li>
+            </ul>
+
+            <p class="plans-tagline">Quedate con Able. Paga menos. Manten tu seguridad.</p>
+            <a class="btn btn-primary" href="#contacto">Conoce como disminuye tu mensualidad -></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="model-section" id="camara-3d" aria-label="Nuestros dispositivos 3D">
+      <div class="model-stage">
+        <div class="model-copy">
+          <span class="eyebrow">Visualizacion tecnica</span>
+          <h2>Nuestros <span class="green-accent">dispositivos</span></h2>
+          <p>Explora los modelos 3D reales de ABLE. Cambia entre camara solar y cerradura electronica con los botones del visor.</p>
+          <ul class="model-specs">
+            <li>Camara solar para vigilancia autonoma</li>
+            <li>Cerradura electronica para hoteles y empresas</li>
+            <li>Control remoto de luces y dispositivos electricos</li>
+          </ul>
+        </div>
+
+        <div class="solar-visual">
+          <canvas id="solarCamera3d" class="is-active" aria-label="Modelo 3D animado de una camara solar ABLE"></canvas>
+          <canvas id="lock3d" aria-label="Modelo 3D de cerradura electronica ABLE"></canvas>
+          <div class="scan-readouts" role="tablist" aria-label="Seleccionar dispositivo 3D">
+            <button class="device-switch is-active" type="button" data-device="camera" role="tab" aria-selected="true" aria-controls="solarCamera3d">Camara solar</button>
+            <button class="device-switch" type="button" data-device="lock" role="tab" aria-selected="false" aria-controls="lock3d">Cerradura electronica</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="device-drops" aria-label="Que hace cada dispositivo">
+        <article class="device-drop" data-device-info="camera">
+          <span class="drop-kicker">Vigilancia autonoma</span>
+          <h3>Camara solar</h3>
+          <p>Protege zonas sin energia disponible usando panel solar, bateria y conexion remota para ver eventos en tiempo real.</p>
+          <ul class="drop-points">
+            <li>Vision nocturna</li>
+            <li>Alertas de movimiento</li>
+            <li>Registro de evidencia</li>
+          </ul>
+        </article>
+
+        <article class="device-drop" data-device-info="lock">
+          <span class="drop-kicker">Acceso interior</span>
+          <h3>Cerradura electronica</h3>
+          <p>Controla habitaciones, oficinas y areas restringidas con tarjeta, PIN o credencial digital sin llaves fisicas.</p>
+          <ul class="drop-points">
+            <li>Permisos por usuario</li>
+            <li>Historial de aperturas</li>
+            <li>Bloqueo remoto</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section operation" id="operacion">
+      <div class="section-inner split">
+        <div>
+          <div class="section-heading operation-heading">
+            <h2>Protocolo <span class="green-accent">Able Secure</span></h2>
+            <p>En Able implementamos nuestras soluciones de seguridad bajo principios simples de proteccion, continuidad y control.</p>
+          </div>
+
+          <div class="process" aria-label="Protocolo Able Secure">
+            <div class="process-item">
+              <div>
+                <h3>Acceso Seguro</h3>
+                <p>Configuracion de usuarios, contrasenas y permisos segun cada cliente.</p>
+              </div>
+            </div>
+            <div class="process-item">
+              <div>
+                <h3>Conectividad Protegida</h3>
+                <p>Instalacion y configuracion segura de camaras, controles de acceso y dispositivos conectados.</p>
+              </div>
+            </div>
+            <div class="process-item">
+              <div>
+                <h3>Continuidad Operacional</h3>
+                <p>Revision de alimentacion, conectividad y funcionamiento de los equipos.</p>
+              </div>
+            </div>
+            <div class="process-item">
+              <div>
+                <h3>Gestion Responsable</h3>
+                <p>Acceso a camaras, registros y plataformas unicamente por usuarios autorizados.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="section-inner">
+        <div class="contact-panel">
+          <div>
+            <h2>Hablemos de tu seguridad</h2>
+            <p>Agenda una evaluacion para definir cobertura, equipos solares, cerraduras electronicas y un plan de monitoreo ajustado a tu operacion.</p>
+            <ul class="contact-list">
+              <li>Empresas, comunidades, obras y bodegas</li>
+              <li>Instalaciones con o sin energia disponible</li>
+              <li>Planes escalables segun nivel de riesgo</li>
+            </ul>
+          </div>
+
+          <form class="contact-form">
+            <label class="field">
+              <span>Nombre</span>
+              <input type="text" name="nombre" autocomplete="name" placeholder="Tu nombre">
+            </label>
+            <label class="field">
+              <span>Telefono o email</span>
+              <input type="text" name="contacto" autocomplete="email" placeholder="contacto@empresa.cl">
+            </label>
+            <label class="field">
+              <span>Proyecto</span>
+              <textarea name="mensaje" placeholder="Cuentanos que lugar necesitas proteger"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span><strong>ABLE Security</strong> es un producto de <strong>KODEI SpA</strong>.</span>
+      <span>Todos los derechos de la operacion reservados.</span>
+    </div>
+  </footer>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+
+  <script>
+    const solarCanvas = document.getElementById("solarCamera3d");
+    const lockCanvas = document.getElementById("lock3d");
+
+    function initSolarCamera3D() {
+      if (!solarCanvas && !lockCanvas) {
+        return;
+      }
+
+      if (solarCanvas) {
+        solarCanvas.dataset.ready = "loading";
+      }
+      if (lockCanvas) {
+        lockCanvas.dataset.ready = "loading";
+      }
+      Promise.all([
+        import("three"),
+        import("https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/MTLLoader.js"),
+        import("https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/OBJLoader.js"),
+        import("https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js"),
+        import("https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js")
+      ])
+        .then(([THREE, mtlModule, objModule, gltfModule, controlsModule]) => {
+          if (solarCanvas) {
+            solarCanvas.dataset.ready = "model";
+            startRealSolarCameraModel(THREE, mtlModule.MTLLoader, objModule.OBJLoader, controlsModule.OrbitControls);
+          }
+          if (lockCanvas) {
+            lockCanvas.dataset.ready = "model";
+            startElectronicLockModel(THREE, gltfModule.GLTFLoader, controlsModule.OrbitControls);
+          }
+        })
+        .catch(() => {
+          showSolarModelMessage("No se pudo cargar el visor 3D en este navegador.");
+          showLockModelMessage("No se pudo cargar el visor 3D.");
+        });
+    }
+
+    function showCanvasModelMessage(targetCanvas, message) {
+      if (!targetCanvas) {
+        return;
+      }
+      const messageCtx = targetCanvas.getContext("2d");
+      const scale = Math.min(window.devicePixelRatio || 1, 2);
+      const w = targetCanvas.clientWidth || 720;
+      const h = targetCanvas.clientHeight || 460;
+      targetCanvas.width = Math.floor(w * scale);
+      targetCanvas.height = Math.floor(h * scale);
+      messageCtx.setTransform(scale, 0, 0, scale, 0, 0);
+      messageCtx.clearRect(0, 0, w, h);
+      messageCtx.fillStyle = "rgba(255, 48, 64, 0.08)";
+      messageCtx.fillRect(0, 0, w, h);
+      messageCtx.strokeStyle = "rgba(255, 48, 64, 0.26)";
+      for (let x = 0; x < w; x += 42) {
+        messageCtx.beginPath();
+        messageCtx.moveTo(x, 0);
+        messageCtx.lineTo(x, h);
+        messageCtx.stroke();
+      }
+      for (let y = 0; y < h; y += 42) {
+        messageCtx.beginPath();
+        messageCtx.moveTo(0, y);
+        messageCtx.lineTo(w, y);
+        messageCtx.stroke();
+      }
+      messageCtx.fillStyle = "#ffd7dc";
+      messageCtx.font = "800 18px Oxanium, Bahnschrift, Segoe UI, sans-serif";
+      messageCtx.textAlign = "center";
+      messageCtx.fillText(message, w / 2, h / 2);
+    }
+
+    function showSolarModelMessage(message) {
+      showCanvasModelMessage(solarCanvas, message);
+    }
+
+    function showLockModelMessage(message) {
+      showCanvasModelMessage(lockCanvas, message);
+    }
+
+    function startRealSolarCameraModel(THREE, MTLLoader, OBJLoader, OrbitControls) {
+      try {
+        const renderer = new THREE.WebGLRenderer({ canvas: solarCanvas, antialias: true, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.setClearColor(0x000000, 0);
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        const scene = new THREE.Scene();
+        const camera3d = new THREE.PerspectiveCamera(38, 1, 0.1, 1200);
+        camera3d.position.set(0, 1.1, 6.8);
+
+        const controls = new OrbitControls(camera3d, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.08;
+        controls.enablePan = false;
+        controls.enableZoom = false;
+        controls.minPolarAngle = Math.PI * 0.22;
+        controls.maxPolarAngle = Math.PI * 0.74;
+        controls.target.set(0, 0.08, 0);
+        solarCanvas.dataset.controls = "orbit";
+        let userIsRotating = false;
+        controls.addEventListener("start", () => {
+          userIsRotating = true;
+        });
+        controls.addEventListener("end", () => {
+          userIsRotating = false;
+        });
+
+        const rig = new THREE.Group();
+        rig.position.y = -0.1;
+        scene.add(rig);
+
+        const mtlLoader = new MTLLoader();
+        mtlLoader.setPath("assets/model/");
+        mtlLoader.setResourcePath("assets/model/");
+        mtlLoader.load(
+          "camera.mtl",
+          (materials) => {
+            materials.preload();
+            const objLoader = new OBJLoader();
+            objLoader.setPath("assets/model/");
+            objLoader.setMaterials(materials);
+            objLoader.load(
+              "camera.obj",
+              (model) => {
+                const baseTexture = new THREE.TextureLoader().load("assets/model/outdoor_security_camera_3d_model_basecolor.JPEG");
+                baseTexture.colorSpace = THREE.SRGBColorSpace;
+
+                model.traverse((child) => {
+                  if (child.isMesh) {
+                    child.material = new THREE.MeshStandardMaterial({
+                      map: baseTexture,
+                      color: 0xffffff,
+                      roughness: 0.46,
+                      metalness: 0.12,
+                      emissive: 0x2a0003,
+                      emissiveIntensity: 0.08
+                    });
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                  }
+                });
+
+                const box = new THREE.Box3().setFromObject(model);
+                const size = new THREE.Vector3();
+                const center = new THREE.Vector3();
+                box.getSize(size);
+                box.getCenter(center);
+                model.position.sub(center);
+                const maxDimension = Math.max(size.x, size.y, size.z) || 1;
+                model.scale.setScalar(2.7 / maxDimension);
+                model.rotation.set(-0.12, -0.48, 0);
+                rig.add(model);
+                solarCanvas.dataset.ready = "loaded";
+              },
+              undefined,
+              () => showSolarModelMessage("El modelo OBJ no pudo cargarse.")
+            );
+          },
+          undefined,
+          () => showSolarModelMessage("El material MTL no pudo cargarse.")
+        );
+
+        scene.add(new THREE.AmbientLight(0xffffff, 1.25));
+        const key = new THREE.DirectionalLight(0xffffff, 2.7);
+        key.position.set(3, 5, 5);
+        scene.add(key);
+        const redWash = new THREE.PointLight(0xff3040, 1.35, 8);
+        redWash.position.set(-2.4, 1.2, 2.8);
+        scene.add(redWash);
+        const red = new THREE.PointLight(0xff3040, 1.55, 7);
+        red.position.set(2.2, -1.35, 2.8);
+        scene.add(red);
+        const redRim = new THREE.SpotLight(0xff3040, 1.9, 7, Math.PI * 0.34, 0.9, 1.4);
+        redRim.position.set(-2.7, -1.05, 3.6);
+        redRim.target.position.set(0, -0.15, 0);
+        scene.add(redRim);
+        scene.add(redRim.target);
+
+        function resizeRealModel() {
+          const rectInfo = solarCanvas.getBoundingClientRect();
+          const w = Math.max(320, rectInfo.width);
+          const h = Math.max(340, rectInfo.height);
+          renderer.setSize(w, h, false);
+          camera3d.aspect = w / h;
+          camera3d.updateProjectionMatrix();
+        }
+
+        function animateRealModel() {
+          const t = performance.now() * 0.001;
+          if (!userIsRotating) {
+            rig.rotation.y = t * 0.18;
+          }
+          rig.rotation.x = Math.sin(t * 0.72) * 0.07;
+          controls.update();
+          renderer.render(scene, camera3d);
+          requestAnimationFrame(animateRealModel);
+        }
+
+        window.addEventListener("resize", resizeRealModel);
+        resizeRealModel();
+        animateRealModel();
+      } catch (error) {
+        showSolarModelMessage("No se pudo iniciar WebGL para el modelo 3D.");
+      }
+    }
+
+    function startElectronicLockModel(THREE, GLTFLoader, OrbitControls) {
+      try {
+        const renderer = new THREE.WebGLRenderer({ canvas: lockCanvas, antialias: true, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.setClearColor(0x000000, 0);
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+        const scene = new THREE.Scene();
+        const camera3d = new THREE.PerspectiveCamera(34, 1, 0.1, 1200);
+        camera3d.position.set(0, 0.08, 5.45);
+
+        const controls = new OrbitControls(camera3d, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.08;
+        controls.enablePan = false;
+        controls.enableZoom = false;
+        controls.minPolarAngle = Math.PI * 0.28;
+        controls.maxPolarAngle = Math.PI * 0.72;
+        controls.target.set(0, -0.02, 0);
+        lockCanvas.dataset.controls = "orbit";
+
+        const rig = new THREE.Group();
+        rig.position.set(0, -0.08, 0);
+        scene.add(rig);
+
+        const gltfLoader = new GLTFLoader();
+        gltfLoader.setPath("assets/model/lock/");
+        gltfLoader.load(
+          "electronic-lock.glb",
+          (gltf) => {
+            const model = gltf.scene;
+            model.traverse((child) => {
+              if (child.isMesh) {
+                child.geometry.computeVertexNormals();
+                if (child.material) {
+                  const materials = Array.isArray(child.material) ? child.material : [child.material];
+                  materials.forEach((material) => {
+                    material.side = THREE.FrontSide;
+                    if ("roughness" in material) {
+                      material.roughness = Math.min(material.roughness ?? 0.28, 0.32);
+                    }
+                    if ("metalness" in material) {
+                      material.metalness = Math.max(material.metalness ?? 0.35, 0.42);
+                    }
+                    if ("clearcoat" in material) {
+                      material.clearcoat = Math.max(material.clearcoat || 0, 0.72);
+                      material.clearcoatRoughness = Math.min(material.clearcoatRoughness || 0.18, 0.16);
+                    }
+                    material.needsUpdate = true;
+                  });
+                }
+                child.castShadow = false;
+                child.receiveShadow = false;
+              }
+            });
+
+            const box = new THREE.Box3().setFromObject(model);
+            const size = new THREE.Vector3();
+            const center = new THREE.Vector3();
+            box.getSize(size);
+            box.getCenter(center);
+            model.position.sub(center);
+            const maxDimension = Math.max(size.x, size.y, size.z) || 1;
+            model.scale.setScalar(1.65 / maxDimension);
+            model.rotation.set(0, -0.12, 0);
+            const fittedBox = new THREE.Box3().setFromObject(model);
+            const fittedCenter = new THREE.Vector3();
+            fittedBox.getCenter(fittedCenter);
+            model.position.sub(fittedCenter);
+            rig.add(model);
+
+            lockCanvas.dataset.ready = "loaded";
+          },
+          undefined,
+          () => showLockModelMessage("El modelo GLB de cerradura no pudo cargarse.")
+        );
+
+        scene.add(new THREE.AmbientLight(0xffffff, 1.28));
+        const key = new THREE.DirectionalLight(0xffffff, 3.4);
+        key.position.set(2.4, 4.2, 4.6);
+        scene.add(key);
+        const gloss = new THREE.DirectionalLight(0xffffff, 1.7);
+        gloss.position.set(-2.8, 2.2, 3.9);
+        scene.add(gloss);
+        const rim = new THREE.DirectionalLight(0xff3040, 2.6);
+        rim.position.set(-3.2, 1.4, 3.2);
+        scene.add(rim);
+        const red = new THREE.PointLight(0xff3040, 3.4, 8);
+        red.position.set(0, -1.4, 2.6);
+        scene.add(red);
+
+        function resizeLockModel() {
+          const rectInfo = lockCanvas.getBoundingClientRect();
+          const w = Math.max(280, rectInfo.width);
+          const h = Math.max(220, rectInfo.height);
+          renderer.setSize(w, h, false);
+          camera3d.aspect = w / h;
+          camera3d.updateProjectionMatrix();
+        }
+
+        function animateLockModel() {
+          const t = performance.now() * 0.001;
+          rig.rotation.y = Math.sin(t * 0.42) * 0.08;
+          rig.rotation.x = Math.sin(t * 0.48) * 0.025;
+          controls.update();
+          renderer.render(scene, camera3d);
+          requestAnimationFrame(animateLockModel);
+        }
+
+        window.addEventListener("resize", resizeLockModel);
+        resizeLockModel();
+        animateLockModel();
+      } catch (error) {
+        showLockModelMessage("No se pudo iniciar WebGL para la cerradura 3D.");
+      }
+    }
+
+    function initDeviceSwitches() {
+      const switches = document.querySelectorAll(".device-switch");
+      const deviceInfoPanels = document.querySelectorAll("[data-device-info]");
+      if (!switches.length || !solarCanvas || !lockCanvas) {
+        return;
+      }
+
+      const setDevice = (device, revealInfo = true) => {
+        const isLock = device === "lock";
+        solarCanvas.classList.toggle("is-active", !isLock);
+        lockCanvas.classList.toggle("is-active", isLock);
+        switches.forEach((button) => {
+          const active = button.dataset.device === device;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-selected", String(active));
+        });
+        deviceInfoPanels.forEach((panel) => {
+          const active = revealInfo && panel.dataset.deviceInfo === device;
+          panel.classList.toggle("is-active", active);
+        });
+      };
+
+      switches.forEach((button) => {
+        button.addEventListener("click", () => setDevice(button.dataset.device));
+      });
+
+      setDevice("camera");
+    }
+
+    function initProtocolAnimation() {
+      const protocol = document.querySelector(".process");
+      if (!protocol) {
+        return;
+      }
+
+      const showProtocol = () => {
+        protocol.classList.add("is-visible");
+      };
+
+      if (!("IntersectionObserver" in window)) {
+        showProtocol();
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          showProtocol();
+          observer.disconnect();
+        }
+      }, {
+        rootMargin: "0px 0px -18% 0px",
+        threshold: 0.24
+      });
+
+      observer.observe(protocol);
+    }
+
+    const canvas = document.getElementById("securityCanvas");
+    const ctx = canvas.getContext("2d");
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let time = 0;
+
+    function resizeCanvas() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function line(x1, y1, x2, y2, color, lineWidth) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lineWidth;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+    }
+
+    function rect(x, y, w, h, color, stroke) {
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, w, h);
+      if (stroke) {
+        ctx.strokeStyle = stroke;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x, y, w, h);
+      }
+    }
+
+    function roundedRect(x, y, w, h, radius, color, stroke) {
+      const r = Math.min(radius, w / 2, h / 2);
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+      ctx.fill();
+      if (stroke) {
+        ctx.strokeStyle = stroke;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+
+    function drawCamera(x, y, scale, side) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(side * scale, scale);
+
+      rect(-8, 0, 16, 112, "rgba(83, 91, 105, 0.68)");
+      rect(-44, 18, 88, 12, "rgba(95, 104, 120, 0.72)");
+
+      roundedRect(-64, -8, 72, 38, 6, "rgba(18, 20, 26, 0.94)", "rgba(255, 255, 255, 0.22)");
+
+      ctx.fillStyle = "#ff3040";
+      ctx.beginPath();
+      ctx.arc(-48, 11, 8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "rgba(255,255,255,0.88)";
+      ctx.beginPath();
+      ctx.arc(-48, 11, 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      roundedRect(-25, -45, 70, 35, 4, "rgba(30, 34, 42, 0.98)", "rgba(255, 48, 64, 0.58)");
+
+      for (let i = 0; i < 4; i++) {
+        line(-12 + i * 15, -43, -12 + i * 15, -12, "rgba(255, 48, 64, 0.34)", 1);
+      }
+
+      ctx.restore();
+    }
+
+    function drawGate(cx, baseY) {
+      const gateW = Math.min(width * 0.28, 430);
+      const left = cx - gateW / 2;
+      const right = cx + gateW / 2;
+      rect(left, baseY - 138, 12, 138, "rgba(92, 101, 116, 0.7)");
+      rect(right - 12, baseY - 138, 12, 138, "rgba(92, 101, 116, 0.7)");
+      line(left + 12, baseY - 124, right - 12, baseY - 18, "rgba(255,255,255,0.16)", 2);
+      line(left + 12, baseY - 18, right - 12, baseY - 124, "rgba(255,255,255,0.16)", 2);
+      line(left + 12, baseY - 74, right - 12, baseY - 74, "rgba(255,48,64,0.34)", 2);
+      rect(cx - 34, baseY - 86, 68, 38, "rgba(12, 14, 19, 0.94)", "rgba(255, 48, 64, 0.52)");
+      ctx.fillStyle = "#ff3040";
+      ctx.font = "700 12px Oxanium, Bahnschrift, Segoe UI, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("ABLE", cx, baseY - 62);
+    }
+
+    function draw() {
+      time += 0.012;
+      ctx.clearRect(0, 0, width, height);
+
+      const horizon = height * 0.72;
+      const scan = (Math.sin(time) + 1) / 2;
+
+      const sky = ctx.createLinearGradient(0, 0, 0, height);
+      sky.addColorStop(0, "rgba(15, 17, 22, 0)");
+      sky.addColorStop(0.55, "rgba(34, 8, 12, 0.24)");
+      sky.addColorStop(1, "rgba(229, 9, 20, 0.10)");
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, width, height);
+
+      for (let i = 0; i < 8; i++) {
+        const x = (i / 7) * width;
+        line(x, height, width / 2, horizon - 56, "rgba(255,255,255,0.045)", 1);
+      }
+
+      line(0, horizon, width, horizon, "rgba(255,255,255,0.12)", 1);
+      line(0, horizon + 38, width, horizon + 38, "rgba(255,48,64,0.22)", 1);
+
+      drawGate(width / 2, horizon + 36);
+      drawCamera(width * 0.18, horizon - 90, 1, 1);
+      drawCamera(width * 0.82, horizon - 90, 1, -1);
+
+      const beamAlpha = 0.16 + scan * 0.15;
+      ctx.fillStyle = `rgba(255, 48, 64, ${beamAlpha})`;
+      ctx.beginPath();
+      ctx.moveTo(width * 0.18 - 50, horizon - 78);
+      ctx.lineTo(width * 0.5 - 120 + scan * 240, horizon + 30);
+      ctx.lineTo(width * 0.5 - 30 + scan * 170, horizon + 30);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = `rgba(255, 48, 64, ${0.12 + (1 - scan) * 0.18})`;
+      ctx.beginPath();
+      ctx.moveTo(width * 0.82 + 50, horizon - 78);
+      ctx.lineTo(width * 0.5 + 120 - scan * 240, horizon + 30);
+      ctx.lineTo(width * 0.5 + 30 - scan * 170, horizon + 30);
+      ctx.closePath();
+      ctx.fill();
+
+      for (let i = 0; i < 26; i++) {
+        const x = (i / 25) * width;
+        const h = 10 + ((i * 17) % 38);
+        rect(x - 2, horizon + 38 - h, 4, h, "rgba(255,255,255,0.16)");
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    draw();
+    initDeviceSwitches();
+    initSolarCamera3D();
+    initProtocolAnimation();
+
+    document.querySelector(".contact-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const button = event.currentTarget.querySelector("button");
+      const original = button.textContent;
+      button.textContent = "Solicitud lista";
+      setTimeout(() => {
+        button.textContent = original;
+        event.currentTarget.reset();
+      }, 1600);
+    });
+  </script>
+</body>
+</html>

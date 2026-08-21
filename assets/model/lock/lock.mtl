@@ -1,0 +1,16 @@
+# Blender 5.0.1 MTL File: 'None'
+# www.blender.org
+
+newmtl tripo_mat_c87ca060-25f2-44e3-9d33-ad139bd41ac5
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Modelo_3D_de_cerradura_inteligente_basecolor.JPEG
+map_Ns Modelo_3D_de_cerradura_inteligente_roughness.JPEG
+map_Pr Modelo_3D_de_cerradura_inteligente_roughness.JPEG
+map_refl Modelo_3D_de_cerradura_inteligente_metallic.JPEG
+map_Pm Modelo_3D_de_cerradura_inteligente_metallic.JPEG
+map_Bump -bm 1.000000 Modelo_3D_de_cerradura_inteligente_normal.JPEG

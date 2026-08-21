@@ -1,0 +1,15 @@
+# Blender 5.0.1 MTL File: 'None'
+# www.blender.org
+
+newmtl tripo_mat_b0aed78e-10b1-4796-ae51-365df52bec70
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd outdoor_security_camera_3d_model_basecolor.JPEG
+map_Ns outdoor_security_camera_3d_model_roughness.JPEG
+map_Pr outdoor_security_camera_3d_model_roughness.JPEG
+map_refl outdoor_security_camera_3d_model_metallic.JPEG
+map_Pm outdoor_security_camera_3d_model_metallic.JPEG
